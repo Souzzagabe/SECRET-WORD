@@ -7,7 +7,7 @@ function App() {
   return (
     <>
       <div>
-        <h2>Secret World</h2>
+        <h2>Secret Word</h2>
       </div>
     </>
   )
