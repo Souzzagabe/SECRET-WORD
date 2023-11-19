@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from 'react'
 import './App.css'
 import { wordsList } from "./data/words"
 import StartScreen from './components/StartScreen'
-import Game from './components/game'
+import Game from './components/Game'
 import GameOver from './components/GameOver'
 
 const stages = [
@@ -15,14 +15,24 @@ function App() {
   const [gameStage, setGameStage] = useState(stages[0].name)
   const [words] = useState(wordsList)
 
-  console.log(words)
+  const startGame = () => {
+    setGameStage(stages[1].name)
+  }
+
+  const verifyLetter = () => {
+    setGameStage(stages[2].name)
+  }
+
+  const retry = () => {
+    setGameStage(stages[0].name)
+  }
 
   return (
     <>
       <div>
-        {gameStage === "start" && <StartScreen />}
-        {gameStage === "game" && <Game/>}
-        {gameStage === "end" && <GameOver/>}
+        {gameStage === "start" && <StartScreen startGame={startGame} />}
+        {gameStage === "game" && <Game verifyLetter={verifyLetter}/>}
+        {gameStage === "end" && <GameOver retry={retry}/>}
         
       </div>
     </>
